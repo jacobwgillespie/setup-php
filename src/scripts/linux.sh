@@ -1,3 +1,5 @@
+set -x
+
 # Function to add sudo
 add_sudo() {
   if ! command -v sudo >/dev/null; then
