@@ -192,7 +192,7 @@ add_php() {
         setup_php_builder
     else
       add_packaged_php
-      switch_version >/dev/null 2>&1
+      switch_version
       add_pecl
     fi
   elif [[ "$version" =~ ${old_versions:?} ]]; then
@@ -250,13 +250,13 @@ setup_php() {
   php_config="$(command -v php-config)"
   if [[ -z "$php_config" ]] || [ "$(php_semver | cut -c 1-3)" != "$version" ]; then
     if [ ! -e "/usr/bin/php$version" ] || [ ! -e "/usr/bin/php-config$version" ]; then
-      add_php >/dev/null 2>&1
+      add_php
     else
       if ! [[ "$version" =~ ${old_versions:?} ]]; then
-        switch_version >/dev/null 2>&1
+        switch_version
       fi
       if [ "${update:?}" = "true" ]; then
-        update_php >/dev/null 2>&1
+        update_php
       else
         status="Switched to"
       fi
