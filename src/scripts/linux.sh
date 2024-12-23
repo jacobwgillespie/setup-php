@@ -1,4 +1,4 @@
-set -x
+set -xT
 
 # Function to add sudo
 add_sudo() {
